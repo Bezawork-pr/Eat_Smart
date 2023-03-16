@@ -15,5 +15,5 @@ for i in range(20):
 session.commit()
 print("It is me")
 for i in session.query(database).all():
-    print("it is i {}".format(i))
+    print("it is i {}".format(i.tweet))
 
