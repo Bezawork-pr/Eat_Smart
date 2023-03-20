@@ -15,5 +15,5 @@ for i in range(20):
     session.add(create_db)
 session.commit()
 for i in session.query(database).all():
-    output_list.append(i.tweet)
+    output_list.append(i)
 
