@@ -15,16 +15,6 @@ def registration():
 def login():
   return render_template('login.html')
 
-@app.route('/tweet', methods =["GET", "POST"])
-def tweetmytweet():
-    if request.method == "POST":
-       user_tweet = request.form['my_tweet']
-       user_name = request.form['user']
-       user_email = request.form['email']
-       user_email = request.form['password']
-       return user_name + " tweeted " + user_tweet + " has been added to database with email address " + user_email
-    return render_template("tweet.html")
-
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=5007)

@@ -48,13 +48,13 @@
           </tr>
         </thead>
         <tbody>
-	  {% for item in output_list %}
           <tr>
-            <th scope="row">{{ item.id }}</th>
-            <td>{{ item.user }}</td>
-            <td>{{ item.tweet }}</td>
-	    <td>{{ item.email }}</td>
+            <th scope="row">1</th>
+            <td>Mark</td>
+	    {% for item in output_list %}
+            <td>{{ item }}</td>
 	    {% endfor %}
+            <td>@mdo</td>
           </tr>
         </tbody>
       </table>
