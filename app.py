@@ -1,11 +1,21 @@
 #!/usr/bin/python3
-from flask import Flask, render_template, url_for
-from session import output_list
+from flask import Flask, render_template, url_for, request
+from engine import EatSmartUser, EatSmartTweet, EatSmartComment
+from session import session, usertweet, tweetcomment, tweet_list, user_list, comment_list
 app = Flask(__name__)
+
+def query():
+    #from session import output_list
+    #output_list = []
+    #for i in session.query(EatSmart).all():
+    #   new_instance = retrive(i.tweet_id, i.user, i.tweet, i.email, i.created_at, i.updated_at)
+    #    output_list.append(new_instance)
+    return output_list
 
 @app.route('/')
 def index():
-  return render_template('index.html', output_list=output_list)
+  #output_list = query()
+  return render_template('index.html', output_list=tweet_list)
 
 @app.route('/registration')
 def registration():
@@ -18,11 +28,14 @@ def login():
 @app.route('/tweet', methods =["GET", "POST"])
 def tweetmytweet():
     if request.method == "POST":
-       user_tweet = request.form['my_tweet']
-       user_name = request.form['user']
-       user_email = request.form['email']
-       user_email = request.form['password']
-       return user_name + " tweeted " + user_tweet + " has been added to database with email address " + user_email
+       tweeted = request.form['my_tweet']
+       user = request.form['user']
+       email = request.form['email']
+       create_db = EatSmart(tweeted, user, email)
+       session.add(create_db)
+       session.commit()
+       #output_list = query()
+       return render_template('index.html', output_list=tweet_list)
     return render_template("tweet.html")
 
 
