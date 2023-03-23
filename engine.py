@@ -23,7 +23,7 @@ class EatSmartUser(Base):
     """class EatSmartUser"""
     __tablename__ = 'eatsmartuser'
     id = Column(Integer, primary_key=True, nullable=False)
-    user_name = Column(String(80), nullable=False)
+    user_name = Column(String(80), nullable=False, unique=True)
     email = Column(String(80), nullable=False)
     password =  Column(String(80), nullable=False)
     created_at = Column(DateTime, nullable=False, default=datetime.utcnow())

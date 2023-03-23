@@ -48,12 +48,27 @@
 					</tr>
 				</thead>
 				<tbody>
-					{% for item in output_list %}
+					{% for item in tweet_list %}
 					<tr>
 						<th scope="row"><img src="https://www.w3schools.com/images/picture.jpg" alt="Mountain" style="width:300px"></th>
-						<td>{{ item.user_id }}</td>
+						{% for i in user_list %}
+						{% if item.user_id == i.id %}
+						<td>{{ i.user_name }}</td>
 						<td>{{ item.tweet }}</td>
-						<td>{{ item.created_at}}</td>
+						<td>{{ item.created_at }}</td>
+						{% for c in comment_list %}
+						<table class="table">
+                                                {% if c.tweet_id == item.id %}
+				<tbody>
+					<tr>
+					<th scope="row">
+                                                        <td class="list-group-item list-group-item-dark">{{ c.comment }}</td>
+				</tbody>
+						</table>
+						{% endif %}
+						{% endfor %}
+						{% endif %}
+						{% endfor %}
 						{% endfor %}
 					</tr>
 				</tbody>

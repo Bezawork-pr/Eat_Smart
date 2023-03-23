@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Registration Form</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style type="text/css">
+      body {
+        padding-top: 7%;
+        background: #337ab7;
+      }
+      .login {
+        margin: 0 auto;
+        max-width: 400px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form action="{{ url_for("comment") }}" method="post">
+      <div class="input-group">
+        <span class="input-group-addon"
+          ><i class="glyphicon glyphicon-lock"></i
+        ></span>
+        <input
+          id="tweet_id"
+          type="text"
+          class="form-control"
+          name="tweet_id"
+          placeholder="tweet_id"
+          required
+        />
+      </div>
+      <br />
+      <div class="input-group">
+        <span class="input-group-addon"
+          ><i class="glyphicon glyphicon-lock"></i
+        ></span>
+        <input
+          id="user_id"
+          type="text"
+          class="form-control"
+          name="user_id"
+          placeholder="user_id"
+          required
+        />
+      </div>
+      <br />
+      <div class="input-group">
+        <span for="comment" class="input-group-addon">comment</span>
+        <input
+          id="comment"
+          type="text"
+          class="form-control"
+          name="comment"
+          placeholder="Comment"
+          required/>
+      </div>
+     
+      <input type="submit" class="btn btn-success btn-block" value="SUBMIT" />
+    </form>
+    
+  </body>
+</html>
+
