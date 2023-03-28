@@ -1,73 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Registration Form</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-    />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <style type="text/css">
-      body {
-        padding-top: 7%;
-        background: #337ab7;
-      }
-      .login {
-        margin: 0 auto;
-        max-width: 400px;
-      }
-    </style>
-  </head>
+	<head>
+		<title>Eat Smart</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link
+			rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+			/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<style>
+.navbar a {
+	color: white;
+}
+.my_style {
+	border-radius: 25px;
+	border: 2px solid #337ab7;
+	margin-top: 0.1%;
+	margin-bottom: 0.1%;
+	margin-right: 0%;
+	margin-left: 20%;
+	background: #337ab7;
+}
+.border  {
+	border: 2px solid #337ab7;
+	border-radius: 25px;
+	margin-bottom: 3%;
 
-  <body>
-    <form action="{{ url_for("tweetmytweet") }}" method="post">
-      <div class="input-group">
-        <span class="input-group-addon"
-          ><i class="glyphicon glyphicon-user"></i
-        ></span>
-        <input
-          id="email"
-          type="text"
-          class="form-control"
-          name="email"
-          placeholder="Email"
-        required
-        />
+}
 
-      </div>
+		</style>
+	</head>
+	<body>
+		<nav class="navbar bg-primary text-white">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#"> Eat Smart </a>
+				</div>
+				{% if logged != "loggedout" %}
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="#"><span class="glyphicon glyphicon-user"></span>
+							{{ logged }}</a>
+					</li>
+					<li>
+						<a href="?logout=true"<span class="glyphicon glyphicon-log-out"></span>
+							Logout </a>
+					</li>
+				</ul>
+				{% else %}
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="{{ url_for('registration') }}"
+						   ><span class="glyphicon glyphicon-user"></span> Sign Up</a
+					   >
+					</li>
+
+					<li>
+						<a href="{{ url_for('login') }}"
+						   ><span class="glyphicon glyphicon-log-in"></span> Login</a
+					   >
+					</li>
+					{% endif %}
+				</ul>
+			</div>
+		</nav>
+
+		<div class="container">
+			<form action="{{ url_for("tweetmytweet") }}" method="post">
       <div class="input-group">
-        <span class="input-group-addon"
-          ><i class="glyphicon glyphicon-user"></i
-        ></span>
-        <input
-          id="user"
-          type="text"
-          class="form-control"
-          name="user"
-          placeholder="User Name"
-        required
-        />
-        
-      </div>
-      <div class="input-group">
-        <span class="input-group-addon"
-          ><i class="glyphicon glyphicon-lock"></i
-        ></span>
-        <input
-          id="password"
-          type="password"
-          class="form-control"
-          name="password"
-          placeholder="Password"
-          required
-        />
-      </div>
-      <br />
-      <div class="input-group">
-        <span for="my_tweet" class="input-group-addon">Tweet</span>
+	      <span for="my_tweet" class="input-group-addon">Tweet</span>
         <input
           id="my_tweet"
           type="text"
@@ -76,10 +79,41 @@
           placeholder="Tweet"
           required/>
       </div>
-     
+
       <input type="submit" class="btn btn-success btn-block" value="SUBMIT" />
     </form>
-    
-  </body>
+			{% for item in tweet_list %}
+			{% for i in user_list %}
+			{% if item.user_id == i.id %}
+			<div class="border">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-4">
+							<div class="row">
+								<img src="https://www.w3schools.com/images/picture.jpg" alt="Mountain" style="width:300px">
+								<div class="col-sm-4">{{ i.user_name }}</div>
+								<div class="col-sm-4">{{ item.created_at }}</div>
+							</div>
+						</div>
+						<div class="col-sm-8">
+							{{ item.tweet }}
+						</div>
+					</div>
+				</div>
+			</div>
+			{% for c in comment_list %}
+			{% if c.tweet_id == item.id %}
+			<div class="my_style">
+				<div class="panel panel-default">
+					<div class="panel-body">{{ c.comment }}</div>
+				</div>
+			</div>
+			{% endif %}
+			{% endfor %}
+			{% endif %}
+			{% endfor %}
+			{% endfor %}
+		</div>
+	</body>
 </html>
 

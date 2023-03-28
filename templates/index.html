@@ -14,6 +14,22 @@
 .navbar a {
 	color: white;
 }
+.my_style {
+	border-radius: 25px;
+	border: 2px solid #337ab7;
+	margin-top: 0.1%;
+	margin-bottom: 0.1%;
+	margin-right: 0%;
+	margin-left: 20%;
+	background: #337ab7;
+}
+.border  {
+	border: 2px solid #337ab7;
+	border-radius: 25px;
+	margin-bottom: 3%;
+
+}
+
 		</style>
 	</head>
 	<body>
@@ -22,57 +38,67 @@
 				<div class="navbar-header">
 					<a class="navbar-brand" href="#"> Eat Smart </a>
 				</div>
+				{% if logged != "loggedout" %}
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="#"><span class="glyphicon glyphicon-user"></span>
+							{{ logged }}</a>
+					</li>
+					<li>
+						<a href="?logout=true"<span class="glyphicon glyphicon-log-out"></span>
+							Logout </a>
+					</li>
+				</ul>
+				{% else %}
 				<ul class="nav navbar-nav navbar-right">
 					<li>
 						<a href="{{ url_for('registration') }}"
 						   ><span class="glyphicon glyphicon-user"></span> Sign Up</a
 					   >
 					</li>
+
 					<li>
 						<a href="{{ url_for('login') }}"
 						   ><span class="glyphicon glyphicon-log-in"></span> Login</a
 					   >
 					</li>
+					{% endif %}
 				</ul>
 			</div>
 		</nav>
 
 		<div class="container">
-			<table class="table">
-				<thead>
-					<tr>
-						<th scope="col">#</th>
-						<th scope="col">User</th>
-						<th scope="col">Tweet</th>
-						<th scope="col">Email</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for item in tweet_list %}
-					<tr>
-						<th scope="row"><img src="https://www.w3schools.com/images/picture.jpg" alt="Mountain" style="width:300px"></th>
-						{% for i in user_list %}
-						{% if item.user_id == i.id %}
-						<td>{{ i.user_name }}</td>
-						<td>{{ item.tweet }}</td>
-						<td>{{ item.created_at }}</td>
-						{% for c in comment_list %}
-						<table class="table">
-                                                {% if c.tweet_id == item.id %}
-				<tbody>
-					<tr>
-					<th scope="row">
-                                                        <td class="list-group-item list-group-item-dark">{{ c.comment }}</td>
-				</tbody>
-						</table>
-						{% endif %}
-						{% endfor %}
-						{% endif %}
-						{% endfor %}
-						{% endfor %}
-					</tr>
-				</tbody>
-			</table>
+			{% for item in tweet_list %}
+			{% for i in user_list %}
+			{% if item.user_id == i.id %}
+			<div class="border">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-4">
+							<div class="row">
+								<img src="https://www.w3schools.com/images/picture.jpg" alt="Mountain" style="width:300px">
+								<div class="col-sm-4">{{ i.user_name }}</div>
+								<div class="col-sm-4">{{ item.created_at }}</div>
+							</div>
+						</div>
+						<div class="col-sm-8">
+							{{ item.tweet }}
+						</div>
+					</div>
+				</div>
+			</div>
+			{% for c in comment_list %}
+			{% if c.tweet_id == item.id %}
+			<div class="my_style">
+				<div class="panel panel-default">
+					<div class="panel-body">{{ c.comment }}</div>
+				</div>
+			</div>
+			{% endif %}
+			{% endfor %}
+			{% endif %}
+			{% endfor %}
+			{% endfor %}
 		</div>
 	</body>
 </html>
