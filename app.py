@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from flask import Flask, render_template, url_for, request
+from flask import Flask, render_template, url_for, request, redirect
 from engine import EatSmartUser, EatSmartTweet, EatSmartComment
 from importlib import reload
 logged = []
@@ -24,8 +24,8 @@ def index():
       if len(logged) == 0:
         user_logged_out = "loggedout"
         logged.append(user_logged_out)
-      print(logged[0])
   return render_template('index.html', logged=logged[0], usertweet=usertweet, tweetcomment=tweetcomment, tweet_list=tweet_list, user_list=user_list, comment_list=comment_list)
+
 
 @app.route('/registration', methods =["GET", "POST"])
 def registration():
@@ -52,12 +52,12 @@ def registration():
 
 @app.route('/login', methods =["GET", "POST"])
 def login():
+    import session
+    reload(session)
+    from session import user_list, usertweet, tweetcomment, tweet_list, comment_list
     if request.method == "POST":
         user = request.form['user']
         password = request.form['password']
-        import session
-        reload(session)
-        from session import user_list
         for i in user_list:
             if i.user_name == user and i.password == password:
                 if len(logged) == 0:
@@ -65,7 +65,7 @@ def login():
                 elif len(logged) == 1:
                   logged[0] = user
                 flag = 1
-                return index()
+                return tweetmytweet()
     logout = request.args.get('logout')
     if logout == "true":
       return index()
@@ -77,15 +77,15 @@ def tweetmytweet():
     reload(session)
     from session import session, user_list, usertweet, tweetcomment, tweet_list, comment_list
     if request.method == "POST":
+       import session
+       reload(session)
+       from session import session, user_list, usertweet, tweetcomment, tweet_list, comment_list
        user_id = None
-       tweeted = request.form['my_tweet']
-       #user = request.form['user']
-       #email = request.form['email']
-       #import session
-       #reload(session)
-       #from session import session, user_list, usertweet, tweetcomment, tweet_list, comment_list
+       try:
+         tweeted = request.form['my_tweet']
+       except Exception as Redirected:
+         return render_template("tweet.html", logged=logged[0], usertweet=usertweet, tweetcomment=tweetcomment, tweet_list=tweet_list, user_list=user_list, comment_list=comment_list)
        for i in user_list:
-           #if i.user_name == user and i.email == email:
            if len(logged) == 1:
                if logged[0] != "loggedout":
                  if i.user_name == logged[0]:
@@ -96,9 +96,18 @@ def tweetmytweet():
        session.add(create_db)
        session.commit()
        session.close()
-       #return render_template('index.html', usertweet=usertweet, tweetcomment=tweetcomment, tweet_list=tweet_list, user_list=user_list, comment_list=comment_list)
+       import session
+       reload(session)
+       from session import session, user_list, usertweet, tweetcomment, tweet_list, comment_list
+       return render_template("tweet.html", logged=logged[0], usertweet=usertweet, tweetcomment=tweetcomment, tweet_list=tweet_list, user_list=user_list, comment_list=comment_list)
+    logout = request.args.get('logout')
+    if logout == "true":
        return index()
-    return render_template("tweet.html", usertweet=usertweet, tweetcomment=tweetcomment, tweet_list=tweet_list, user_list=user_list, comment_list=comment_list)
+    if len(logged) == 1:
+       if logged[0] != "loggedout":
+           return render_template("tweet.html", logged=logged[0], usertweet=usertweet, tweetcomment=tweetcomment, tweet_list=tweet_list, user_list=user_list, comment_list=comment_list)
+    return redirect(url_for('login'))
+
 
 @app.route('/comment', methods =["GET", "POST"])
 def comment():

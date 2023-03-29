@@ -69,19 +69,16 @@
 
 		<div class="container">
 			<form action="{{ url_for("tweetmytweet") }}" method="post">
-      <div class="input-group">
-	      <span for="my_tweet" class="input-group-addon">Tweet</span>
-        <input
-          id="my_tweet"
-          type="text"
-          class="form-control"
-          name="my_tweet"
-          placeholder="Tweet"
-          required/>
-      </div>
-
-      <input type="submit" class="btn btn-success btn-block" value="SUBMIT" />
-    </form>
+				<div class="form-group" style="margin-bottom: 6%;" >
+					<div class="form-outline">
+						<textarea class="form-control" id="my_tweet" name="my_tweet" placeholder="Make the world a better place by sharing your knowledge on healthy food" rows="6" required></textarea>
+					</div>
+					<!--<input type="submit" class="btn btn-success btn-block" value="SUBMIT" />-->
+					<div class="col-md-12 bg-light text-right" style="padding-right: 0px;">
+					<input class="btn btn-primary" type="submit" value="Submit">
+					</div>
+				</div>
+			</form>
 			{% for item in tweet_list %}
 			{% for i in user_list %}
 			{% if item.user_id == i.id %}
