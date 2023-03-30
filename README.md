@@ -1,1 +1,1 @@
-# <pre> Eat Smart </pre>
+# <pre> Eat Smart project</pre>
