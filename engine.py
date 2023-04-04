@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This file connects to the database"""
+"""This file connects to the database using sqlalchemy"""
 from sqlalchemy import create_engine
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
 from sqlalchemy.orm import declarative_base, relationship
@@ -35,7 +35,7 @@ class EatSmartUser(Base):
 
 
     def __init__(self, user_name, email, password):
-        """Init function"""
+        """Init function that gets user name email and password through app file, and app file get this contents through the form rendered in template when users are filling out the form"""
         self.user_name = user_name
         self.email = email
         self.password = password
@@ -51,6 +51,8 @@ class EatSmartTweet(Base):
     eatsmartcomment = relationship("EatSmartComment", backref="eatsmarttweet", cascade="all, delete, delete-orphan")
 
     def __init__(self, tweet, user_id):
+        """This function initates the EatSmartTweet class from the app file using tweet filed by the user on the tweet page.
+        And user_id that is found in the eatsmartuser table in the database"""
         self.tweet = tweet
         self.user_id = user_id
 
@@ -64,6 +66,7 @@ class EatSmartComment(Base):
     created_at = Column(DateTime, nullable=False, default=datetime.utcnow())
 
     def __init__(self, user_id, tweet_id, comment):
+        """This method initiates the EatSmartComment class from the app file using tweet_id and user_id provided by user"""
         self.user_id = user_id
         self.tweet_id = tweet_id
         self.comment = comment
