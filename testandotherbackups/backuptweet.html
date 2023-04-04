@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Registration Form</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style type="text/css">
+      body {
+        padding-top: 7%;
+        background: #337ab7;
+      }
+      .login {
+        margin: 0 auto;
+        max-width: 400px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form action="{{ url_for("tweetmytweet") }}" method="post">
+      <div class="input-group">
+        <span class="input-group-addon"
+          ><i class="glyphicon glyphicon-user"></i
+        ></span>
+        <input
+          id="email"
+          type="text"
+          class="form-control"
+          name="email"
+          placeholder="Email"
+        required
+        />
+
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon"
+          ><i class="glyphicon glyphicon-user"></i
+        ></span>
+        <input
+          id="user"
+          type="text"
+          class="form-control"
+          name="user"
+          placeholder="User Name"
+        required
+        />
+        
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon"
+          ><i class="glyphicon glyphicon-lock"></i
+        ></span>
+        <input
+          id="password"
+          type="password"
+          class="form-control"
+          name="password"
+          placeholder="Password"
+          required
+        />
+      </div>
+      <br />
+      <div class="input-group">
+        <span for="my_tweet" class="input-group-addon">Tweet</span>
+        <input
+          id="my_tweet"
+          type="text"
+          class="form-control"
+          name="my_tweet"
+          placeholder="Tweet"
+          required/>
+      </div>
+     
+      <input type="submit" class="btn btn-success btn-block" value="SUBMIT" />
+    </form>
+    
+  </body>
+</html>
+
