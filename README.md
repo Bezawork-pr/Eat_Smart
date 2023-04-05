@@ -1,5 +1,9 @@
 # <pre> Eat Smart</pre>
 I am Bezawork Belachew Lindlof. Student at ALX. I developed this app as one of the projects for ALX. This app is a Twitter-like app. Users can register on the register page. From the registration form,  their name, email, and password will be saved in the database. Then they will be able to log in. They will be redirected to the registration page if they do not provide the proper username and password they used during registration. After login, users can tweet. Before login, users can't access the tweet page and can only access the index page with tweets but no option to tweet. After tweeting, users can log out and they will be redirected to the index page. Users can comment on other people's tweets
+
+## <pre> Site currently deployed at </pre>
+[Eat Smart](http://52.6.195.254/)
+
 ## <pre> Index Page before login </pre>
 <img width="1269" alt="Screen Shot 2023-03-30 at 16 23 20" src="https://user-images.githubusercontent.com/107026397/230048160-7fcc63d7-fe91-430c-aa90-1216df844e91.png">
 
@@ -15,6 +19,10 @@ I am Bezawork Belachew Lindlof. Student at ALX. I developed this app as one of t
 
 ## <pre> Tweet Page </pre>
 <img width="1278" alt="Screen Shot 2023-04-03 at 15 48 52" src="https://user-images.githubusercontent.com/107026397/230048351-ab45bfa6-f914-4c96-a41f-cf8fc4d6bfa5.png">
+
+## <pre> Comments </pre>
+<img width="1277" alt="Screen Shot 2023-03-30 at 16 29 14" src="https://user-images.githubusercontent.com/107026397/230049605-ee84a474-f585-4552-9080-a8396f8b5867.png">
+
 
 ## Installation
 
@@ -50,6 +58,9 @@ Here are some related projects
 - [@bezawork Lindlof Github](https://www.github.com/bezawork-pr/)
 - [@bezawork Lindlof Linkedin](https://www.linkedin.com/in/bezaworklindlof/)
 - [@bezawork Lindlof Medium](https://medium.com/@bezaworkalx)
+## Acknowledgements
+
+ - [ALX](https://www.alxafrica.com/)
 
 ## License
 
