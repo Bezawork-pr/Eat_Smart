@@ -1,11 +1,25 @@
 # <pre> Eat Smart   ![icons8-project-64](https://user-images.githubusercontent.com/107026397/230062358-fc53818c-1633-44ef-9ba8-9aba5c84609c.png)
 </pre>
+<p>I am Bezawork Belachew Lindlof:grinning: Student at ALX.</p>
 
-I am Bezawork Belachew Lindlof:grinning: Student at ALX. I developed this app as one of the projects for ALX. This app is a Twitter-like app. Users can register on the register page. From the registration form,  their name, email, and password will be saved in the database. Then they will be able to log in. They will be redirected to the registration page if they do not provide the proper username and password they used during registration. After login, users can tweet. Before login, users can't access the tweet page and can only access the index page with tweets but no option to tweet. After tweeting, users can log out and they will be redirected to the index page. Users can comment on other people's tweets.
+<p>I am inspired to develop this app because it will allow users to make healthier meal choices. With this information, users will be able to identify which meals are the most nutritionally efficient and cost-effective, helping them to reach their dietary goals with confidence.
+
+I am also passionate about helping to reduce the environmental impacts of unsustainable food practices, as this app will allow users to make more informed food choices.
+
+I am driven by the idea that everyone should have access to the tools to properly manage their energy levels, as this could have a profound impact on why some people can be successful and reach their goals, while others are deprived of opportunities due to a lack of awareness. 
+
+For these reasons, I am driven to develop this app. On a larger scale, I hope to help others have better access to understanding their food requirements and making educated decisions when it comes to their meal plans.
+
+But on a personal level, I am highly inspired to make this knowledge accessible to better my own life and performance.
+
+What comes next for this app will be decided on how people find it useful on the beta test.
+
+This app is a Twitter-like app. Users can register on the register page. From the registration form,  their name, email, and password will be saved in the database. Then they will be able to log in. They will be redirected to the registration page if they do not provide the proper username and password they used during registration. After login, users can tweet. Before login, users can't access the tweet page and can only access the index page with tweets but no option to tweet. After tweeting, users can log out and they will be redirected to the index page. Users can comment on other people's tweets.
 
 This is the first self-directed project that we were given by ALX. The struggle I had was figuring out where to start at the beginning of the project. I started building the classes and connecting with the database using SqlAlchemy. After that, I started working with Flask to render HTML pages, which I later modified using Jinja. My working environment was vim on the server where the project is deployed. Making the necessary update and installation had some hickups :upside_down_face:, which took roughly one week of the project week.
 
 Another more technical issue I was having was when users were redirected from the login page to the tweet page. I was getting an error when I called the tweetmytweet function from login, so I decided to render the tweet page separately on the login function and also on the tweetmytweet function. Therefore, the tweet HTML was getting rendered via two routes. Later, after debugging, I found that the reason I was having the error was because when calling the tweetmytweet function from login, it was using the POST method rather than the GET method, so I used a try and except to check if the POST is called with no POST, meaning the tweet form is not filled out. So the code does not break when the user is redirected from the login page to tweet.
+
 ```Python 
 
 
