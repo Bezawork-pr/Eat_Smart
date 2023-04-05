@@ -50,31 +50,32 @@ def tweetmytweet():
 ```
 
 
-## <pre> Site currently deployed at </pre>
+##  Site currently deployed at 
 [Eat Smart](http://52.6.195.254/)
 
-## <pre> Languages used </pre>
+## Languages used 
 [![My Skills](https://skillicons.dev/icons?i=python,html,css,flask)](https://skillicons.dev)
 
-## <pre> Index Page before login </pre>
+##  Features 
+### <pre> Index page </pre>
 <img width="800" alt="Screen Shot 2023-03-30 at 16 23 20" src="https://user-images.githubusercontent.com/107026397/230048160-7fcc63d7-fe91-430c-aa90-1216df844e91.png">
 
 
 
-## <pre> Registration Page </pre>
+### <pre> Registration Page </pre>
 <img width="800" alt="Screen Shot 2023-03-30 at 16 26 24" src="https://user-images.githubusercontent.com/107026397/230048216-f9fa8551-9cc6-42b7-88bd-60ae932c4528.png">
 
 
 
-## <pre> Login Page </pre>
+### <pre> Login Page </pre>
 <img width="800" alt="Screen Shot 2023-03-30 at 16 27 20" src="https://user-images.githubusercontent.com/107026397/230048268-6723de77-159c-45da-b370-dd89dbd0de24.png">
 
 
 
-## <pre> Tweet Page </pre>
+### <pre> Tweet Page </pre>
 <img width="800" alt="Screen Shot 2023-04-03 at 15 48 52" src="https://user-images.githubusercontent.com/107026397/230048351-ab45bfa6-f914-4c96-a41f-cf8fc4d6bfa5.png">
 
-## <pre> Comments </pre>
+### <pre> Comments </pre>
 <img width="800" alt="Screen Shot 2023-03-30 at 16 29 14" src="https://user-images.githubusercontent.com/107026397/230049605-ee84a474-f585-4552-9080-a8396f8b5867.png">
 
 
@@ -114,7 +115,7 @@ Here are some related projects
 - [@bezawork Lindlof Medium](https://medium.com/@bezaworkalx)
 ## Acknowledgements
 
- - [ALX](https://www.alxafrica.com/)
+ [ALX](https://www.alxafrica.com/)
 
 ## License
 
