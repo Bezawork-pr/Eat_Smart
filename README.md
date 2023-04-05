@@ -19,6 +19,8 @@ This app is a Twitter-like app. Users can register on the register page. From th
 This is the first self-directed project that we were given by ALX. The struggle I had was figuring out where to start at the beginning of the project. I started building the classes and connecting with the database using SqlAlchemy. After that, I started working with Flask to render HTML pages, which I later modified using Jinja. My working environment was vim on the server where the project is deployed. Making the necessary update and installation had some hickups :upside_down_face:, which took roughly one week of the project week.
 
 Another more technical issue I was having was when users were redirected from the login page to the tweet page. I was getting an error when I called the tweetmytweet function from login, so I decided to render the tweet page separately on the login function and also on the tweetmytweet function. Therefore, the tweet HTML was getting rendered via two routes. Later, after debugging, I found that the reason I was having the error was because when calling the tweetmytweet function from login, it was using the POST method rather than the GET method, so I used a try and except to check if the POST is called with no POST, meaning the tweet form is not filled out. So the code does not break when the user is redirected from the login page to tweet.
+    
+The algorithm I chose is o(n), because this was the best solution with the time limitation that I could manage.
 
 ```Python 
 
