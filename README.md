@@ -1,18 +1,68 @@
 # <pre> Eat Smart</pre>
 
-I am Bezawork Belachew Lindlof. Student at ALX. I developed this app as one of the projects for ALX. This app is a Twitter-like app. Users can register on the register page. From the registration form,  their name, email, and password will be saved in the database. Then they will be able to log in. They will be redirected to the registration page if they do not provide the proper username and password they used during registration. After login, users can tweet. Before login, users can't access the tweet page and can only access the index page with tweets but no option to tweet. After tweeting, users can log out and they will be redirected to the index page. Users can comment on other people's tweets.
+I am Bezawork Belachew Lindlof:grinning: Student at ALX. I developed this app as one of the projects for ALX. This app is a Twitter-like app. Users can register on the register page. From the registration form,  their name, email, and password will be saved in the database. Then they will be able to log in. They will be redirected to the registration page if they do not provide the proper username and password they used during registration. After login, users can tweet. Before login, users can't access the tweet page and can only access the index page with tweets but no option to tweet. After tweeting, users can log out and they will be redirected to the index page. Users can comment on other people's tweets.
 
-This is the first self-directed project that we were given by ALX. The struggle I had was figuring out where to start at the beginning of the project. I started building the classes and connecting with the database using SqlAlchemy. After that, I started working with Flask to render HTML pages, which I later modified using Jinja. My working environment was vim on the server where the project is deployed. Making the necessary update and installation had some hickups, which took roughly one week of the project week.
+This is the first self-directed project that we were given by ALX. The struggle I had was figuring out where to start at the beginning of the project. I started building the classes and connecting with the database using SqlAlchemy. After that, I started working with Flask to render HTML pages, which I later modified using Jinja. My working environment was vim on the server where the project is deployed. Making the necessary update and installation had some hickups :upside_down_face:, which took roughly one week of the project week.
+
+Another more technical issue I was having was when users were redirected from the login page to the tweet page. I was getting an error when I called the tweetmytweet function from login, so I decided to render the tweet page separately on the login function and also on the tweetmytweet function. Therefore, the tweet HTML was getting rendered via two routes. Later, after debugging, I found that the reason I was having the error was because when calling the tweetmytweet function from login, it was using the POST method rather than the GET method, so I used a try and except to check if the POST is called with no POST, meaning the tweet form is not filled out. So the code does not break when the user is redirected from the login page to tweet.
+```Python 
+
+
+@app.route('/tweet', methods =["GET", "POST"])
+def tweetmytweet():
+    """This function renders the tweet page where user can tweet.
+    This page cannot be accessed directly if user has not logged in"""
+    import session
+    reload(session)
+    from session import session, user_list, usertweet, tweetcomment, tweet_list, comment_list
+    if request.method == "POST":
+       import session
+       reload(session)
+       from session import session, user_list, usertweet, tweetcomment, tweet_list, comment_list
+       user_id = None
+       try: # used try because after loggin when user is directed to this page the method is still post so this handles the error when there is no tweet sent from the form
+         tweeted = request.form['my_tweet']
+       except Exception as Redirected:
+         return render_template("tweet.html", logged=logged[0], usertweet=usertweet, tweetcomment=tweetcomment, tweet_list=tweet_list, user_list=user_list, comment_list=comment_list)
+       for i in user_list: # this loop goes through the user's list in the database and get the user id
+           if len(logged) == 1:
+               if logged[0] != "loggedout":
+                 if i.user_name == logged[0]: 
+                    user_id = i.id
+       if user_id is None: # if the user cannot be found in the database. User will be directed to registration page
+           return render_template('registration.html')
+       create_db = EatSmartTweet(tweeted, user_id) # when tweet is entered, the tweet will be added and commited 
+       session.add(create_db)
+       session.commit()
+       session.close()
+       import session # After reload user can instantly view the tweet just made
+       reload(session)
+       from session import session, user_list, usertweet, tweetcomment, tweet_list, comment_list
+       return render_template("tweet.html", logged=logged[0], usertweet=usertweet, tweetcomment=tweetcomment, tweet_list=tweet_list, user_list=user_list, comment_list=comment_list)
+    logout = request.args.get('logout')
+    if logout == "true": # When user logs out they will be directed to index page where there is just viewing option to tweets
+       return index()
+    if len(logged) == 1: # If user is not logged out they can make more tweets
+       if logged[0] != "loggedout":
+           return render_template("tweet.html", logged=logged[0], usertweet=usertweet, tweetcomment=tweetcomment, tweet_list=tweet_list, user_list=user_list, comment_list=comment_list)
+    return redirect(url_for('login')) # If users have no right to make tweets user will be redirected to login page
+
+```
+
 
 ## <pre> Site currently deployed at </pre>
 [Eat Smart](http://52.6.195.254/)
+
+
 
 ## <pre> Index Page before login </pre>
 <img width="1269" alt="Screen Shot 2023-03-30 at 16 23 20" src="https://user-images.githubusercontent.com/107026397/230048160-7fcc63d7-fe91-430c-aa90-1216df844e91.png">
 
 
+
 ## <pre> Registration Page </pre>
 <img width="1280" alt="Screen Shot 2023-03-30 at 16 26 24" src="https://user-images.githubusercontent.com/107026397/230048216-f9fa8551-9cc6-42b7-88bd-60ae932c4528.png">
+
 
 
 ## <pre> Login Page </pre>
