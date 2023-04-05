@@ -1,4 +1,4 @@
-# <pre> Eat Smart project</pre>
+# <pre> Eat Smart</pre>
 I am Bezawork Belachew Lindlof. Student at ALX. I developed this app as one of the projects for ALX. This app is a Twitter-like app. Users can register on the register page. From the registration form,  their name, email, and password will be saved in the database. Then they will be able to log in. They will be redirected to the registration page if they do not provide the proper username and password they used during registration. After login, users can tweet. Before login, users can't access the tweet page and can only access the index page with tweets but no option to tweet. After tweeting, users can log out and they will be redirected to the index page. Users can comment on other people's tweets
 ## <pre> Index Page before login </pre>
 <img width="1269" alt="Screen Shot 2023-03-30 at 16 23 20" src="https://user-images.githubusercontent.com/107026397/230048160-7fcc63d7-fe91-430c-aa90-1216df844e91.png">
